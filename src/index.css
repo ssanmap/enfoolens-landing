@@ -1,0 +1,69 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos base del Swiper */
+.swiper {
+  @apply w-full;
+}
+
+/* Flechas personalizadas - Versión mejorada */
+.swiper-button-prev,
+.swiper-button-next {
+  @apply w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-sm 
+         hover:bg-white/20 transition-all duration-300 hidden md:flex 
+         items-center justify-center;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  @apply text-enfoolens-primary text-xl font-bold;
+  content: '' !important; /* Elimina el contenido por defecto */
+}
+
+/* Iconos SVG personalizados */
+.swiper-button-prev svg,
+.swiper-button-next svg {
+  @apply w-6 h-6;
+}
+
+/* Posicionamiento */
+.swiper-button-prev {
+  @apply left-4;
+}
+.swiper-button-next {
+  @apply right-4;
+}
+
+/* Paginación */
+.swiper-pagination-bullet-active {
+  @apply bg-enfoolens-primary;
+}
+
+/* Efectos de texto */
+.hero-content {
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Animaciones suaves para los textos */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease forwards;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
