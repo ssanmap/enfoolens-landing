@@ -13,6 +13,11 @@ module.exports = {
           primary: '#3cebb0',    // Verde-azul claro
           secondary: '#83e2fe',  // Azul claro
           accent: '#ff6b6b',     // Nuevo: Para énfasis (opcional)
+          purple: {                // tus “OOs” del logo
+            DEFAULT: '#9b5de5',
+            light: '#c084fc',
+            dark:  '#7b2cbf',
+          },
           
           // Variantes oscuras/light para hover
           'primary-dark': '#2bc89d',
@@ -33,6 +38,8 @@ module.exports = {
       backgroundImage: {
         'enfoolens-gradient': 'linear-gradient(135deg, #3cebb0 0%, #83e2fe 100%)',
         'enfoolens-light': 'linear-gradient(to bottom right, #f8f9fa 0%, #ecfeff 100%)',
+        'enfoolens-purple-gradient':
+        'linear-gradient(135deg, #9b5de5 0%, #3cebb0 100%)',
       }
     },
   },

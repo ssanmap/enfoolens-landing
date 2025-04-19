@@ -37,7 +37,7 @@ export const Gallery = () => {
   );
 
   return (
-    <section id="galeria" className="py-16 bg-enfoolens-light">
+    <section id="galeria" className="py-16 bg-enfoolens-light ">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-enfoolens-dark">
           Nuestros <span className="text-enfoolens-primary">Lentes</span>
