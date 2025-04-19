@@ -14,3 +14,8 @@ export const getProductos = async () => {
   const res = await API.get("/productos?populate=*");
   return res.data.data;
 };
+
+export const getCategorias = async () => {
+  const res = await API.get("/categorias?populate=*");
+  return res.data.data;
+};

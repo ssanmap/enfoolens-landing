@@ -28,17 +28,20 @@ export const Header: React.FC = () => {
   // 2) Scroll‑spy para link activo (opcional)
   useEffect(() => {
     const handleSpy = () => {
-      const scrollPos = window.scrollY + 120;
-      for (const link of links) {
-        const el = document.getElementById(link.id);
+      const scrollPos = window.scrollY + 120
+      // Recorremos 'links' de atrás hacia adelante
+      for (let i = links.length - 1; i >= 0; i--) {
+        const { id } = links[i]
+        const el = document.getElementById(id)
         if (el && scrollPos >= el.offsetTop) {
-          setCurrent(link.id);
+          setCurrent(id)
+          break   // ¡importante! salimos al primer match
         }
       }
-    };
-    window.addEventListener("scroll", handleSpy);
-    return () => window.removeEventListener("scroll", handleSpy);
-  }, []);
+    }
+    window.addEventListener("scroll", handleSpy)
+    return () => window.removeEventListener("scroll", handleSpy)
+  }, [])
 
   return (
     <header
@@ -52,9 +55,12 @@ export const Header: React.FC = () => {
         {/* Logo */}
         <a href="#" className="flex items-center">
           <img
-            src="assets/logo_white.jpg"
+            src="assets/enff.png"
             alt="ENFOOLENS"
-            className={`transition-all duration-300 ${scrolled ? "h-8" : "h-16"}`}
+            className={`transition-all duration-300 ${scrolled ? "h-8" : "h-16"
+              
+            }
+            `}
           />
         </a>
 
@@ -67,7 +73,7 @@ export const Header: React.FC = () => {
               className={`
                 relative font-medium transition
                 ${current === id
-                  ? "text-enfoolens-purple"
+                  ? "text-enfoolens-purple before:w-full"
                   : "text-enfoolens-dark hover:text-enfoolens-purple"
                 }
                 before:absolute before:-bottom-1 before:left-0

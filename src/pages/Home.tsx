@@ -7,6 +7,7 @@ import { Footer } from "../components/Footer";
 import { HeroCarousel } from "../components/HeroCarousel";
 import { WhatsAppButton } from "../components/WhatsAppButton";
 import { About } from "../components/About";
+import { Features } from "../components/Features";
 
 
 export const Home = () => {
@@ -16,7 +17,7 @@ export const Home = () => {
       <HeroCarousel />
       <Gallery />
       <About />
-      <Services />
+      <Features />
       <Contact />
       <WhatsAppButton />
       <Footer />
