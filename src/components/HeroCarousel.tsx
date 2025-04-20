@@ -26,6 +26,7 @@ export const HeroCarousel: React.FC = () => {
     (async () => {
       try {
         const data = await getCarrusel();
+        console.log('data', data);
         setSlides(data.filter((s: any) => s.activo && s.imagen?.url));
       } catch (err) {
         console.error(err);
