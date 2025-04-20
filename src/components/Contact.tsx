@@ -165,7 +165,7 @@ export const Contact: React.FC = () => {
                   <FiMapPin className="text-2xl text-white mt-1" />
                   <div>
                     <h4 className="font-semibold">Ubicación</h4>
-                    <p className="opacity-90">Av. Principal 1234, Santiago, Chile</p>
+                    <p className="opacity-90">Madrid 1143, Santiago, Chile</p>
                   </div>
                 </div>
               </div>

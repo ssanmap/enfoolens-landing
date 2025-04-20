@@ -142,7 +142,7 @@ export const Gallery: React.FC = () => {
                     className="bg-enfoolens-purple text-white px-6 py-2 rounded-full hover:bg-enfoolens-purple-dark transition w-full"
                     onClick={() =>
                       window.open(
-                        `https://wa.me/123456789?text=Hola! Me interesa ${p.titulo}`,
+                        `https://wa.me/56976611236?text=Hola! Me interesa ${p.titulo}`,
                         "_blank"
                       )
                     }
