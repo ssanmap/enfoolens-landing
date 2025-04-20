@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:1337/api", // cambiar luego por Railway si lo subes
+  baseURL: "https://cms-enfoolens-production.up.railway.app/api", // cambiar luego por Railway si lo subes
 });
 
 export const getCarrusel = async () => {
