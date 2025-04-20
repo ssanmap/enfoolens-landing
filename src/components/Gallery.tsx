@@ -97,7 +97,7 @@ export const Gallery: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {visibles.map((p) => {
             const imgSrc = Array.isArray(p.imagen)
-              ? `https://cms-enfoolens-production.up.railway.app/${p.imagen[0].url}`
+              ? `https://cms-enfoolens-production.up.railway.app${p.imagen[0].url}`
               : p.imagen;
 
             return (
