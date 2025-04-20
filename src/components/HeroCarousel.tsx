@@ -7,6 +7,36 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { getCarrusel } from '../api/strapi';
 
+
+
+export const LoaderEnfoolens = () => {
+  return (
+    <div className="loader-enfoolens-container">
+      <div className="loader-glasses">
+        {/* Lente izquierdo */}
+        <div className="loader-lens left-lens">
+          <div className="lens-reflection"></div>
+        </div>
+        
+        {/* Lente derecho */}
+        <div className="loader-lens right-lens">
+          <div className="lens-reflection"></div>
+        </div>
+        
+        {/* Puente */}
+        <div className="loader-bridge"></div>
+      </div>
+      
+      {/* Texto */}
+      <p className="loader-text">Enfocando tu visión...</p>
+      
+      {/* Barra de progreso */}
+      <div className="loader-progress-bar">
+        <div className="loader-progress"></div>
+      </div>
+    </div>
+  );
+};
 interface SlideFromStrapi {
   id: number;
   titulo: string;
@@ -37,8 +67,8 @@ export const HeroCarousel: React.FC = () => {
   }, []);
 
   if (loading) return (
-    <div className="flex items-center justify-center h-[60vw] 2xl:h-[50vw] max-h-[80vh] min-h-[50vh]">
-      <div className="animate-pulse text-enfoolens-purple">Cargando…</div>
+    <div className="flex items-center justify-center h-[60vw] 2xl:h-[50vw] max-h-[80vh] min-h-[50vh] text-gray-500">
+      <LoaderEnfoolens />
     </div>
   );
 
@@ -51,9 +81,10 @@ export const HeroCarousel: React.FC = () => {
   return (
     <div className="w-full relative overflow-hidden">
       <Swiper
+      
         modules={[Autoplay, EffectFade, Pagination, Navigation]}
         effect="fade"
-        speed={1200}
+        speed={800}
         autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }}
         pagination={{ clickable: true, dynamicBullets: true }}
         navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
@@ -75,6 +106,7 @@ export const HeroCarousel: React.FC = () => {
             <SwiperSlide key={slide.id} className="relative">
               {/* Imagen con zoom dinámico */}
               <img
+              loading="lazy"
                 src={imageUrl}
                 alt={slide.titulo}
                 className="absolute inset-0 w-full h-full object-cover object-[center_25%]

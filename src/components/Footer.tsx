@@ -51,7 +51,7 @@ export const Footer = () => {
                 <FiMail /> contacto@enfoolens.cl
               </li>
               <li className="flex items-center gap-2 text-enfoolens-light/80">
-                <FiMapPin /> Av. Principal 1234, Santiago
+                <FiMapPin /> Madrid 114, Santiago
               </li>
             </ul>
           </div>
