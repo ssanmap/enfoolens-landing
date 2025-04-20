@@ -21,17 +21,11 @@ const features = [
   {
     id: 3,
     icon: <FaMedal size={32} className="text-white" />, // Garantía de 2 Años
-    title: 'Garantía de 2 Años',
+    title: 'Garantía de 1 Año',
     description: 'Todos nuestros productos incluyen garantía extendida contra defectos y servicio de mantenimiento.',
     gradient: 'from-violet-600 to-violet-400'
   },
-  {
-    id: 4,
-    icon: <FaSyncAlt size={32} className="text-white" />, // 30 Días de Prueba
-    title: '30 Días de Prueba',
-    description: 'Devolución sin complicaciones si no estás completamente satisfecho con tu compra. Tu satisfacción es nuestra prioridad.',
-    gradient: 'from-fuchsia-600 to-fuchsia-400'
-  }
+  
 ];
 
 export const Features: React.FC = () => {
