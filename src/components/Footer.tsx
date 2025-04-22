@@ -13,14 +13,16 @@ export const Footer = () => {
             </p>
             <div className="flex gap-4">
               <a 
-                href="#" 
+                href="https://www.instagram.com/enfoolens.cl"
+                target="_blank" 
                 className="text-enfoolens-light/70 hover:text-white transition"
                 aria-label="Instagram"
               >
                 <FiInstagram size={20} />
               </a>
               <a 
-                href="#" 
+                href="https://www.facebook.com/enfoolens.cl"
+                target="_blank" 
                 className="text-enfoolens-light/70 hover:text-white transition"
                 aria-label="Facebook"
               >
@@ -51,7 +53,7 @@ export const Footer = () => {
                 <FiMail /> contacto@enfoolens.cl
               </li>
               <li className="flex items-center gap-2 text-enfoolens-light/80">
-                <FiMapPin /> Madrid 114, Santiago
+                <FiMapPin /> Madrid 1143, Santiago
               </li>
             </ul>
           </div>

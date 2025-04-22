@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { FiMenu, FiShoppingBag, FiUser, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiInstagram, FiMapPin } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 const links = [
-  { id: "inicio", label: "Inicio" },
+  { id: "", label: "Inicio" },
   { id: "galeria", label: "Lentes" },
   { id: "servicios", label: "Servicios" },
   { id: "about", label: "Nosotros" },
@@ -15,41 +15,37 @@ export const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [current, setCurrent] = useState("inicio");
 
-  // 1) Mide scroll para cambiar tamaño del header
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // activa estado según posición al montar
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 2) Scroll‑spy para link activo (opcional)
   useEffect(() => {
     const handleSpy = () => {
-      const scrollPos = window.scrollY + 120
-      // Recorremos 'links' de atrás hacia adelante
+      const pos = window.scrollY + 120;
       for (let i = links.length - 1; i >= 0; i--) {
-        const { id } = links[i]
-        const el = document.getElementById(id)
-        if (el && scrollPos >= el.offsetTop) {
-          setCurrent(id)
-          break   // ¡importante! salimos al primer match
+        const el = document.getElementById(links[i].id);
+        if (el && pos >= el.offsetTop) {
+          setCurrent(links[i].id);
+          break;
         }
       }
-    }
-    window.addEventListener("scroll", handleSpy)
-    return () => window.removeEventListener("scroll", handleSpy)
-  }, [])
+    };
+    window.addEventListener("scroll", handleSpy);
+    return () => window.removeEventListener("scroll", handleSpy);
+  }, []);
 
   return (
     <header
-      className={`header-gradient fixed  left-0 right-0 w-full z-[999] transition-all duration-300 bg-white/80
+      className={`
+        fixed w-full z-50 transition-all duration-300 bg-white/80
         ${scrolled
           ? "bg-white/80 backdrop-blur-xl shadow-lg py-2"
           : "bg-white/20 backdrop-blur-lg py-6"
-        }`}
+        }
+      `}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
@@ -57,14 +53,13 @@ export const Header: React.FC = () => {
           <img
             src="assets/enff.png"
             alt="ENFOOLENS"
-            className={`transition-all duration-300 ${scrolled ? "h-8" : "h-16"
-              
-            }
-            `}
+            className={`transition-all duration-300 ${
+              scrolled ? "h-8" : "h-16"
+            }`}
           />
         </a>
 
-        {/* Navegación Escritorio */}
+        {/* Nav Escritorio */}
         <nav className="hidden md:flex items-center space-x-8">
           {links.map(({ id, label }) => (
             <motion.a
@@ -89,34 +84,59 @@ export const Header: React.FC = () => {
           ))}
         </nav>
 
-        {/* CTA + Iconos Escritorio */}
+        {/* CTA + Iconos Escritorio - Versión mejorada */}
         <div className="hidden md:flex items-center space-x-4">
-          <button
+          {/* Botón "Ubícanos" con efecto 3D y sombra */}
+          <motion.a
+            href="#ubicacion"
             className="
-              px-5 py-2 rounded-full font-bold
+              px-5 py-2.5 rounded-lg font-bold relative
               bg-enfoolens-purple text-white
-              shadow-[0_0_10px_rgba(155,93,229,0.7)]
-              hover:shadow-[0_0_20px_rgba(155,93,229,0.9)]
+              shadow-lg hover:shadow-xl
               transition-all duration-300
+              overflow-hidden
+              group
             "
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
           >
-            Contáctanos
-          </button>
-          <button className="p-2 text-enfoolens-dark hover:text-enfoolens-purple transition">
-            <FiUser size={20} />
-          </button>
-          <button className="p-2 text-enfoolens-dark hover:text-enfoolens-purple transition relative">
-            <FiShoppingBag size={20} />
+            <span className="relative z-10">Ubícanos</span>
             <span className="
-              absolute -top-1 -right-1 bg-enfoolens-primary text-white
-              text-xs rounded-full w-5 h-5 flex items-center justify-center
-            ">
-              0
-            </span>
-          </button>
+              absolute inset-0 bg-gradient-to-r 
+              from-enfoolens-purple/80 to-enfoolens-cyan/80
+              opacity-0 group-hover:opacity-100
+              transition-opacity duration-300
+            "></span>
+          </motion.a>
+
+          {/* Icono Instagram con efecto hover y enlace externo */}
+          <motion.a
+            href="https://www.instagram.com/enfoolens.cl/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              p-2.5 rounded-lg
+              bg-white text-enfoolens-purple
+              border border-enfoolens-purple/20
+              shadow-md hover:shadow-lg
+              transition-all duration-300
+              group
+            "
+            aria-label="Síguenos en Instagram"
+            whileHover={{ y: -2, scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FiInstagram 
+              size={20} 
+              className="
+                group-hover:text-enfoolens-cyan
+                transition-colors duration-300
+              " 
+            />
+          </motion.a>
         </div>
 
-        {/* Hamburguesa Móvil */}
+        {/* Hamburguesa Mobile */}
         <button
           className="md:hidden p-2 text-enfoolens-dark"
           onClick={() => setIsOpen(!isOpen)}
@@ -126,37 +146,51 @@ export const Header: React.FC = () => {
         </button>
       </div>
 
-      {/* Menú Móvil */}
+      {/* Menú Mobile mejorado */}
       {isOpen && (
-        <div className="md:hidden bg-white/90 shadow-lg backdrop-blur-md">
-          <nav className="flex flex-col space-y-2 p-4">
+        <div className="md:hidden bg-white/95 shadow-xl backdrop-blur-md">
+          <nav className="flex flex-col space-y-1 p-4">
             {links.map(({ id, label }) => (
-              <a
+              <motion.a
                 key={id}
                 href={`#${id}`}
                 className="
                   font-medium py-3 px-4 rounded-lg
-                  hover:bg-enfoolens-light text-enfoolens-dark
+                  hover:bg-enfoolens-light/50 text-enfoolens-dark
+                  transition-colors
                 "
                 onClick={() => setIsOpen(false)}
+                whileHover={{ x: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
                 {label}
-              </a>
+              </motion.a>
             ))}
           </nav>
           <div className="p-4 border-t border-enfoolens-light/30 flex justify-center space-x-6">
-            <button className="p-2 text-enfoolens-dark hover:text-enfoolens-purple transition">
-              <FiUser size={20} />
-            </button>
-            <button className="p-2 text-enfoolens-dark hover:text-enfoolens-purple transition relative">
-              <FiShoppingBag size={20} />
-              <span className="
-                absolute -top-1 -right-1 bg-enfoolens-primary text-white
-                text-xs rounded-full w-5 h-5 flex items-center justify-center
-              ">
-                0
-              </span>
-            </button>
+            {/* Mapa con animación */}
+            <motion.a
+              href="#ubicacion"
+              className="p-3 rounded-lg bg-enfoolens-purple/10 hover:bg-enfoolens-purple/20 transition"
+              aria-label="Ubícanos"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FiMapPin size={20} className="text-enfoolens-purple" />
+            </motion.a>
+            
+            {/* Instagram con enlace externo */}
+            <motion.a
+              href="https://www.instagram.com/enfoolens.cl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-lg bg-enfoolens-cyan/10 hover:bg-enfoolens-cyan/20 transition"
+              aria-label="Instagram"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FiInstagram size={20} className="text-enfoolens-cyan" />
+            </motion.a>
           </div>
         </div>
       )}

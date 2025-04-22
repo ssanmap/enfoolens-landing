@@ -8,6 +8,8 @@ import { HeroCarousel } from "../components/HeroCarousel";
 import { WhatsAppButton } from "../components/WhatsAppButton";
 import { About } from "../components/About";
 import { Features } from "../components/Features";
+import { InstagramBanner } from "../components/InstagramFeed";
+import { LocationMap } from "../components/LocationMap";
 
 
 export const Home = () => {
@@ -16,9 +18,11 @@ export const Home = () => {
       <Header />
       <HeroCarousel />
       <Gallery />
+      <InstagramBanner />
       <About />
       <Features />
       <Contact />
+      <LocationMap />
       <WhatsAppButton />
       <Footer />
     </div>
