@@ -114,7 +114,7 @@ export const HeroCarousel: React.FC = () => {
               />
 
               {/* Overlay morado suave */}
-              <div className="absolute inset-0 " />
+              <div className="absolute inset-0 pointer-events-none" />
 
               {/* Contenido: móvil centro, XL izquierda */}
               <div className="absolute inset-0 flex flex-col justify-end px-4 pb-12 lg:pb-24 xl:pb-32 xl:pl-24
