@@ -101,7 +101,7 @@ export const HeroCarousel: React.FC = () => {
         {slides.map((slide) => {
           const imageUrl = slide.imagen.url.startsWith('http')
             ? slide.imagen.url
-            : `https://cms-enfoolens-production.up.railway.app${slide.imagen.url}`;
+            : `https://admin.enfoolens.cl${slide.imagen.url}`;
           return (
             <SwiperSlide key={slide.id} className="relative">
               {/* Imagen con zoom dinámico */}
